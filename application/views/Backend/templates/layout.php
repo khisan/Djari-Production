@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
-            <img alt="image" src="<?php echo base_url(); ?>assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+            <img alt="image" src="<?php echo base_url(); ?>assets/Backend/img/avatar/avatar-1.png" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">Hi, Admin</div></a>
           </li>
         </ul>
