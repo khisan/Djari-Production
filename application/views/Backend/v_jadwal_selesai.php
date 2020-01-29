@@ -19,20 +19,32 @@ $this->load->view('Backend/templates/header');
                   <thead>
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Tanggal</th>
                       <th scope="col">Nama</th>
                       <th scope="col">Alamat</th>
-                      <th scope="col">Paket</th>
+                      <th scope="col">Tanggal</th>
+                      <th scope="col">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php 
+                    $no=0;
+                    foreach ($data->result() as $row):
+                    $no++;
+                  ?>
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>tetew</td>
+                      <th><?php echo $no; ?></th>
+                      <td><?php echo $row->tanggal; ?></td>
+                      <td><?php echo $row->nama; ?></td>
+                      <td><?php echo $row->alamat; ?></td>
+                      <td>
+                        <div class="form-button-action">
+                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Jadwal"  data-id="<?php echo $row->id_jadwal_selesai; ?>">
+                            <i class="fa fa-times"></i>
+                          </a>
+                        </div>
+                      </td>
                     </tr>
+                  <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -42,5 +54,46 @@ $this->load->view('Backend/templates/header');
       </div>
     </div>
   </section>
+  <!--DELETE RECORD MODAL-->
+  <form action="<?php echo site_url('Backend/Jadwal_selesai/delete');?>" method="post">
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header no-bd">
+            <h5 class="modal-title">
+              <span class="fw-mediumbold">
+                Hapus Jadwal</span>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-info">
+              Anda yakin ingin menghapus data ini?
+            </div>
+          </div>
+          <div class="modal-footer no-bd">
+            <input type="hidden" name="id">
+            <button type="submit" class="btn btn-primary">Hapus</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <?php $this->load->view('Backend/templates/footer'); ?>
+
+<script>
+  $(document).ready(function() {
+
+    //Delete Record
+    $('.btn-delete').on('click', function() {
+      var id = $(this).data('id');
+      $('[name="id"]').val(id);
+      $('#DeleteModal').modal('show');
+    });
+
+  });
+</script>

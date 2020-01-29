@@ -51,7 +51,12 @@ $this->load->view('Backend/templates/header');
                           <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Jadwal"  data-id="<?php echo $row->id_jadwal; ?>">
                             <i class="fa fa-times"></i>
                           </a>
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Hapus Jadwal"  data-id="<?php echo $row->id_jadwal; ?>">
+                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Done Jadwal"
+                          data-id="<?php echo $row->id_jadwal; ?>" 
+                          data-tanggal="<?php echo $row->tanggal;?>"
+                          data-nama="<?php echo $row->nama;?>"
+                          data-alamat="<?php echo $row->alamat;?>" 
+                          >
                             Done
                           </a>
                         </div>
@@ -67,6 +72,7 @@ $this->load->view('Backend/templates/header');
       </div>
     </div>
   </section>
+
   <!--ADD RECORD MODAL-->
   <form action="<?php echo site_url('Backend/Jadwal/save');?>" method="post">
     <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog">
@@ -192,35 +198,55 @@ $this->load->view('Backend/templates/header');
     </div>
   </form>
 
-  <!--DONE RECORD MODAL-->
+    <!--DONE RECORD MODAL-->
   <form action="<?php echo site_url('Backend/Jadwal/done');?>" method="post">
-    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="DoneModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header no-bd">
             <h5 class="modal-title">
               <span class="fw-mediumbold">
-                Hapus Jadwal</span>
+                Done Jadwal</span>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <div class="alert alert-info">
-              Anda yakin ingin menghapus data ini?
-            </div>
+            <form>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <input name="id_3" type="text" class="form-control" placeholder="Id Jadwal" required="" disabled>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <input name="tanggal_3" type="date" class="form-control" placeholder="Tanggal" required="" disabled>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <input name="nama_3" type="text" class="form-control" placeholder="Nama" required="" disabled>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <input name="alamat_3" type="text" class="form-control" placeholder="Alamat" required="" disabled>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
           <div class="modal-footer no-bd">
-            <input type="hidden" name="id">
-            <button type="submit" class="btn btn-primary">Hapus</button>
+            <input type="hidden" name="kode">
+            <button type="submit" class="btn btn-primary">Kirim</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
         </div>
       </div>
     </div>
   </form>
-
 </div>
 <?php $this->load->view('Backend/templates/footer'); ?>
 <script>
@@ -245,6 +271,19 @@ $this->load->view('Backend/templates/header');
       var id = $(this).data('id');
       $('[name="id"]').val(id);
       $('#DeleteModal').modal('show');
+    });
+
+    //Done Record
+    $('.btn-done').on('click', function() {
+      var id = $(this).data('id');
+      var tanggal = $(this).data('tanggal');
+      var nama = $(this).data('nama');
+      var alamat = $(this).data('alamat');
+      $('[name="id_3"]').val(id);
+      $('[name="tanggal_3"]').val(tanggal);
+      $('[name="nama_3"]').val(nama);
+      $('[name="alamat_3"]').val(alamat);
+      $('#DoneModal').modal('show');
     });
 
   });
