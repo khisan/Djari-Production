@@ -9,6 +9,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/Backend/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/moment.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/js/stisla.js"></script>
+  <script src="<?php echo base_url(); ?>assets/Backend/modules/datatables/datatables.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/Backend/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/Backend/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/Backend/modules/jquery-ui/jquery-ui.min.js"></script>
   
   <!-- JS Libraies -->
 <?php
@@ -82,12 +86,6 @@ if ($this->uri->segment(2) == "" || $this->uri->segment(2) == "index") { ?>
 <?php
 }elseif ($this->uri->segment(2) == "modules_chartjs") { ?>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/chart.min.js"></script>
-<?php
-}elseif ($this->uri->segment(2) == "modules_datatables") { ?>
-  <script src="<?php echo base_url(); ?>assets/Backend/modules/datatables/datatables.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/Backend/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/Backend/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/Backend/modules/jquery-ui/jquery-ui.min.js"></script>
 <?php
 }elseif ($this->uri->segment(2) == "modules_owl_carousel") { ?>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/owlcarousel2/dist/owl.carousel.min.js"></script>

@@ -616,7 +616,7 @@
                   <h4>Walter White</h4>
                   <span>Chief Executive Officer</span>
                   <div class="social">
-                    <a href=""><i class="fa fa-sign-in"></i></a>
+                    <a href="<?php echo base_url('Backend/login'); ?>"><i class="fa fa-sign-in"></i></a>
                   </div>
                 </div>
               </div>
@@ -631,7 +631,7 @@
                   <h4>Sarah Jhonson</h4>
                   <span>Product Manager</span>
                   <div class="social">
-                    <a href=""><i class="fa fa-sign-in"></i></a>
+                    <a href="<?php echo base_url('Backend/login'); ?>"><i class="fa fa-sign-in"></i></a>
                   </div>
                 </div>
               </div>
@@ -646,7 +646,7 @@
                   <h4>William Anderson</h4>
                   <span>CTO</span>
                   <div class="social">
-                    <a href=""><i class="fa fa-sign-in"></i></a>
+                    <a href="<?php echo base_url('Backend/login'); ?>"><i class="fa fa-sign-in"></i></a>
                   </div>
                 </div>
               </div>
@@ -661,7 +661,7 @@
                   <h4>Amanda Jepson</h4>
                   <span>Accountant</span>
                   <div class="social">
-                    <a href=""><i class="fa fa-sign-in"></i></a>
+                    <a href="<?php echo base_url('Backend/login'); ?>"><i class="fa fa-sign-in"></i></a>
                   </div>
                 </div>
               </div>
