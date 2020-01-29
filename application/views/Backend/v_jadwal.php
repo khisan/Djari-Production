@@ -279,7 +279,7 @@ $this->load->view('Backend/templates/header');
       var tanggal = $(this).data('tanggal');
       var nama = $(this).data('nama');
       var alamat = $(this).data('alamat');
-      $('[name="id_3"]').val(id);
+      $('[name="kode"]').val(id);
       $('[name="tanggal_3"]').val(tanggal);
       $('[name="nama_3"]').val(nama);
       $('[name="alamat_3"]').val(alamat);

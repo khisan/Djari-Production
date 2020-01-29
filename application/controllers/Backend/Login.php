@@ -28,12 +28,11 @@ class Login extends CI_Controller {
 				);
  
 			$this->session->set_userdata($data_session);
-			$this->session->set_flashdata('success','Action Completed');
- 
 			redirect(base_url("Admin"));
  
 		}else{
-			echo "Username dan password salah !";
+			$this->session->set_flashdata('flash', 'Gagal');
+      redirect('Login');
 		}
 	}
  

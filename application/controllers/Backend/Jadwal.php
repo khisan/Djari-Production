@@ -48,8 +48,7 @@ class Jadwal extends CI_Controller {
 		// $nama 	 = strip_tags(htmlspecialchars($this->input->post('nama_3',TRUE),ENT_QUOTES));
 		// $alamat 	 = strip_tags(htmlspecialchars($this->input->post('alamat_3',TRUE),ENT_QUOTES));
 		// $tanggal 	 = strip_tags(htmlspecialchars($this->input->post('tanggal_3',TRUE),ENT_QUOTES));
-		$this->M_jadwal->done_jadwal();
-		$this->M_jadwal->hapus_jadwal($id);
+		$this->M_jadwal->done_jadwal($id);
 		$this->session->set_flashdata('msg','info');
 		redirect('Backend/Jadwal_selesai');
 

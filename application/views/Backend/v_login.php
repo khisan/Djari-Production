@@ -24,6 +24,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <img src="<?php echo base_url(); ?>assets/Backend/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
             </div>
 
+            <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('flash'); ?>"></div>
+            <?php if ($this->session->flashdata('flash')) : ?>
+            <?php endif; ?>
+
             <div class="card card-primary">
               <div class="card-header"><h4>Login</h4></div>
 
