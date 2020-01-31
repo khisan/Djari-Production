@@ -5,11 +5,18 @@ class Login extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
+		$this->load->model('M_user');
 		$this->load->model('M_login');
 	}
- 
+
 	function index(){
 		$this->load->view('Backend/v_login');
+	}
+ 
+	function login_by_id(){
+		$id_user = $this->uri->segment(4);
+		$x['data'] = $this->M_user->get_user_by_id($id_user);
+		$this->load->view('Backend/v_login',$x);
 	}
  
 	function aksi_login(){
@@ -20,10 +27,12 @@ class Login extends CI_Controller {
 			'password' => md5($password)
 			);
 		$cek = $this->M_login->cek_login("tb_user",$where)->num_rows();
+		$user = $this->db->get_where('tb_user', ['username' => $username])->row_array();
 		if($cek > 0){
  
 			$data_session = array(
-				'nama' => $username,
+				'nama' => $user['nama'],
+				'gambar' => $user['gambar'],
 				'status' => "login"
 				);
  

@@ -33,9 +33,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <div class="card-body">
                 <form method="POST" action="<?php echo base_url('Backend/login/aksi_login'); ?>" class="needs-validation" novalidate="">
+                  <?php $b = $data->row_array(); ?>
                   <div class="form-group">
                     <label for="email">Username</label>
-                    <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus>
+                    <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus value="<?php echo $b['username']; ?>">
                     <div class="invalid-feedback">
                       Mohon isi username
                     </div>
