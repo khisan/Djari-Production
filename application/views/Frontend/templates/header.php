@@ -24,6 +24,7 @@
   <link href="<?php echo base_url(); ?>assets/Frontend/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/Frontend/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
+
   <!-- Main Stylesheet File -->
   <link href="<?php echo base_url(); ?>assets/Frontend/css/style.css" rel="stylesheet">
 

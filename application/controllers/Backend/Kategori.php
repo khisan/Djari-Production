@@ -8,7 +8,7 @@ class Kategori extends CI_Controller {
 		$this->load->model('M_kategori');
 	
 		if($this->session->userdata('status') != "login"){
-			redirect(base_url("login"));
+			redirect(base_url("Home"));
 		}
 	}
 

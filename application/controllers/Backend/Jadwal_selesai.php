@@ -8,7 +8,7 @@ class Jadwal_selesai extends CI_Controller {
 		$this->load->model('M_jadwal_selesai');
 	
 		if($this->session->userdata('status') != "login"){
-			redirect(base_url("login"));
+			redirect(base_url("Home"));
 		}
 	}
 

@@ -7,9 +7,10 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_jadwal');
 		$this->load->model('M_jadwal_selesai');
+		
 	
 		if($this->session->userdata('status') != "login"){
-			redirect(base_url("Login"));
+			redirect(base_url("Home"));
 		}
 	}
 

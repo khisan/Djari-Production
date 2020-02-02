@@ -15,6 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/Backend/modules/jquery-ui/jquery-ui.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/sweetalert/sweetalert.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/sweetalert/myscript.js"></script>
+  <script src="<?php echo base_url(); ?>assets/Backend/modules/summernote/summernote-bs4.js"></script>
+  <script src="<?php echo base_url('assets/Backend/modules/dropify/js/dropify.min.js')?>"></script>
   
   <!-- JS Libraies -->
 <?php

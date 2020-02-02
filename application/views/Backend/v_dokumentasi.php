@@ -22,9 +22,9 @@ $this->load->view('Backend/templates/header');
                   <thead>
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Tanggal</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Alamat</th>
+                      <th scope="col">Gambar</th>
+                      <th scope="col">Keterangan</th>
+                      <th scope="col">Kategori</th>
                       <th scope="col">Aksi</th>
                     </tr>
                   </thead>
@@ -36,28 +36,20 @@ $this->load->view('Backend/templates/header');
                   ?>
                     <tr>
                       <th><?php echo $no; ?></th>
-                      <td><?php echo $row->tanggal; ?></td>
-                      <td><?php echo $row->nama; ?></td>
-                      <td><?php echo $row->alamat; ?></td>
+                      <td><img width="250px" height="150px" src="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" alt=""></td>
+                      <td><?php echo $row->keterangan; ?></td>
+                      <td><?php echo $row->nama_kategori; ?></td>
                       <td>
                         <div class="form-button-action">
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Jadwal" data-id="<?php echo $row->id_jadwal; ?>" 
-                            data-tanggal="<?php echo $row->tanggal;?>"
-                            data-nama="<?php echo $row->nama;?>"
-                            data-alamat="<?php echo $row->alamat;?>"
+                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Dokumentasi" data-id="<?php echo $row->id_dokumentasi; ?>" 
+                            data-gambar="<?php echo $row->gambar;?>"
+                            data-keterangan="<?php echo $row->keterangan;?>"
+                            data-kategori="<?php echo $row->id_kategori;?>"
                             >
                             <i class="fa fa-edit"></i>
                           </a>
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Jadwal"  data-id="<?php echo $row->id_jadwal; ?>">
+                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Dokumentasi"  data-id="<?php echo $row->id_dokumentasi; ?>">
                             <i class="fa fa-times"></i>
-                          </a>
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Done Jadwal"
-                          data-id="<?php echo $row->id_jadwal; ?>" 
-                          data-tanggal="<?php echo $row->tanggal;?>"
-                          data-nama="<?php echo $row->nama;?>"
-                          data-alamat="<?php echo $row->alamat;?>" 
-                          >
-                            Done
                           </a>
                         </div>
                       </td>
@@ -74,14 +66,14 @@ $this->load->view('Backend/templates/header');
   </section>
 
   <!--ADD RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Jadwal/save');?>" method="post">
+  <form action="<?php echo site_url('Backend/Dokumentasi/save');?>" method="post" enctype="multipart/form-data">
     <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">
               <span class="fw-mediumbold">
-                Jadwal Baru</span>
+                Dokumentasi Baru</span>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -91,25 +83,30 @@ $this->load->view('Backend/templates/header');
             <form>
               <div class="row">
                 <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <label>Tanggal</label>
-                    <input name="tanggal" type="date" class="form-control" placeholder="Tanggal">
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Gambar</label>
+                      <input type="file" name="filefoto" class="dropify" data-height="190" required>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <label>Nama</label>
-                    <input name="nama" type="text" class="form-control" placeholder="Nama">
+                    <label>Keterangan</label>
+                    <textarea name="keterangan" type="text" class="form-control" placeholder="Keterangan"></textarea>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <label>Alamat</label>
-                    <textarea name="alamat" type="text" class="form-control" placeholder="Alamat"></textarea>
+                    <label>Kategori</label>
+                    <select class="form-control form-control" name="kategori" id="defaultSelect">
+                      <option>Pilih Kategori</option>
+                      <?php foreach ($kategori->result() as $row) : ?>
+                        <option value="<?php echo $row->id_kategori;?>"><?php echo $row->nama_kategori;?></option>
+                      <?php endforeach;?>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -125,14 +122,14 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--EDIT RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Jadwal/edit');?>" method="post">
+  <form action="<?php echo site_url('Backend/Dokumentasi/edit');?>" method="post" enctype="multipart/form-data">
     <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header no-bd">
             <h5 class="modal-title">
               <span class="fw-mediumbold">
-                Edit Jadwal</span>
+                Edit Dokumentasi</span>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -142,25 +139,40 @@ $this->load->view('Backend/templates/header');
             <form>
               <div class="row">
                 <div class="col-sm-12">
+                  <?php foreach ($data->result() as $row): ?>
                   <div class="form-group form-group-default">
-                    <input name="tanggal_2" type="date" class="form-control" placeholder="Tanggal" required="">
+                    <input type="file" name="filefoto_2" class="dropify" data-height="190" data-default-file="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>">
+                  </div>
+                <?php endforeach;?>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <textarea name="keterangan_2" type="text" class="form-control" placeholder="Keterangan"></textarea>
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <input name="nama_2" type="text" class="form-control" placeholder="Nama" required="">
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="alamat_2" type="text" class="form-control" placeholder="Alamat" required="">
+                    <select class="form-control form-control" name="kategori_2" id="defaultSelect">
+                      <option>Pilih Kategori</option>
+                      <?php foreach ($data->result() as $row): ?>
+                        <?php foreach ($kategori->result() as $row_kategori) : ?>
+                          <?php if($row_kategori->id_kategori==$row->id_kategori):?>
+                          <option value="<?php echo $row->id_kategori;?>" selected><?php echo $row_kategori->nama_kategori;?></option>
+                          <?php else:?>
+                          <option value="<?php echo $row->id_kategori;?>"><?php echo $row_kategori->nama_kategori;?></option>
+                          <?php endif;?>
+                        <?php endforeach;?>
+                      <?php endforeach;?>
+                    </select>
                   </div>
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-footer no-bd">
-            <input type="hidden" name="kode">
+            <?php foreach ($data->result() as $row): ?>
+              <input type="hidden" name="id_dokumentasi" value="<?php echo $row->id_dokumentasi;?>">
+            <?php endforeach;?>
             <button type="submit" class="btn btn-primary">Edit</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
@@ -170,7 +182,7 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--DELETE RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Jadwal/delete');?>" method="post">
+  <form action="<?php echo site_url('Backend/Dokumentasi/delete');?>" method="post" enctype="multipart/form-data">
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -197,72 +209,22 @@ $this->load->view('Backend/templates/header');
       </div>
     </div>
   </form>
-
-    <!--DONE RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Jadwal/done');?>" method="post">
-    <div class="modal fade" id="DoneModal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header no-bd">
-            <h5 class="modal-title">
-              <span class="fw-mediumbold">
-                Done Jadwal</span>
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="id_3" type="text" class="form-control" placeholder="Id Jadwal" required="" disabled>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="tanggal_3" type="date" class="form-control" placeholder="Tanggal" required="" disabled>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="nama_3" type="text" class="form-control" placeholder="Nama" required="" disabled>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="alamat_3" type="text" class="form-control" placeholder="Alamat" required="" disabled>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer no-bd">
-            <input type="hidden" name="kode">
-            <button type="submit" class="btn btn-primary">Kirim</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
 </div>
 <?php $this->load->view('Backend/templates/footer'); ?>
 <script>
   $(document).ready(function() {
-    $('#add-row').dataTable();
+    $('#addRowModal');
 
     //Edit Record
     $('.btn-edit').on('click', function() {
       var id = $(this).data('id');
-      var tanggal = $(this).data('tanggal');
-      var nama = $(this).data('nama');
-      var alamat = $(this).data('alamat');
+      var filefoto = $(this).data('filefoto');
+      var keterangan = $(this).data('keterangan');
+      var kategori = $(this).data('kategori');
       $('[name="kode"]').val(id);
-      $('[name="tanggal_2"]').val(tanggal);
-      $('[name="nama_2"]').val(nama);
-      $('[name="alamat_2"]').val(alamat);
+      $('[name="filefoto_2"]').val(filefoto);
+      $('[name="keterangan_2"]').val(keterangan);
+      $('[name="kategori_2"]').val(kategori);
       $('#EditModal').modal('show');
     });
 
@@ -284,6 +246,15 @@ $this->load->view('Backend/templates/header');
       $('[name="nama_3"]').val(nama);
       $('[name="alamat_3"]').val(alamat);
       $('#DoneModal').modal('show');
+    });
+
+    $('.dropify').dropify({
+        messages: {
+            default: 'Drag atau drop untuk memilih gambar',
+            replace: 'Ganti',
+            remove:  'Hapus',
+            error:   'error'
+        }
     });
 
   });

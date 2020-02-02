@@ -119,7 +119,7 @@
               </div>
               <h2 class="title"><a href="#">Our Plan</a></h2>
               <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
               </p>
             </div>
           </div>
@@ -146,7 +146,7 @@
     <!--==========================
       Facts Section
     ============================-->
-    <section id="facts"  class="wow fadeIn">
+    <section id="facts" class="wow fadeIn">
       <div class="container">
 
         <header class="section-header">
@@ -178,293 +178,145 @@
 
         </div>
 
-       <!-- #facts -->
+        <!-- #facts -->
 
-    <!--==========================
+        <!--==========================
       Portfolio Section
     ============================-->
-    <section id="portfolio"  class="section-bg" >
-      <div class="container">
+        <section id="portfolio" class="section-bg">
+          <div class="container">
 
-        <header class="section-header">
-          <h3 class="section-title">Our Gallery</h3>
-        </header>
+            <header class="section-header">
+              <h3 class="section-title">Our Gallery</h3>
+            </header>
 
-        <div class="row">
-          <div class="col-lg-12">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Wedding</li>
-              <li data-filter=".filter-card">Photo Shoot</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/1.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/1.jpg')?>" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Wedding</a></h4>
-                <p>Pre-Wedding</p>
+            <div class="row">
+              <div class="col-lg-12">
+                <ul id="portfolio-flters">
+                  <li data-filter=".filter-all">all</li>
+                  <?php foreach ($kategori->result() as $row):?>
+                    <li data-filter=".<?php echo $row->nama_kategori; ?>"><?php echo $row->nama_kategori; ?></li>
+                  <?php endforeach;?>
+                </ul>
               </div>
             </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/2.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/2.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Web 3" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
+            <div class="row portfolio-container">
+            <?php foreach ($dokumentasi->result() as $row):?>
+              <div class="col-lg-4 col-md-6 portfolio-item filter-all wow fadeInUp">
+                <div class="portfolio-wrap">
+                  <figure>
+                    <img src="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" class="img-fluid" alt="">
+                    <a href="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
+                    <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
+                  </figure>
 
-              <div class="portfolio-info">
-                <h4><a href="#">Wedding</a></h4>
-                <p>On Reception</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/3.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/3.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="App 2" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Wedding</a></h4>
-                <p>On Reception</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/4.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/4.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Card 2" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Photo Shoot</a></h4>
-                <p>Personal Photo</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/5.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/5.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Web 2" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Wedding</a></h4>
-                <p>Pre-Wedding</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/6.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/6.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="App 3" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Photo Shoot</a></h4>
-                <p>Personal Photo</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/7.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/7.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Card 1" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Photo Shoot</a></h4>
-                <p>Baby Look</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/8.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/8.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Card 3" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Photo Shoot</a></h4>
-                <p>Baby Look</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/9.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/9.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Photo Shoot</a></h4>
-                <p>Baby Look</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/10.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/10.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Wedding</a></h4>
-                <p>On Reception</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/11.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/11.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Photo Shoot</a></h4>
-                <p>Family Photo</p>
-              </div>
-            </div>
-          </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="<?php echo site_url('assets/Frontend/img/portfolio/12.jpg')?>" class="img-fluid" alt="">
-                <a href="<?php echo site_url('assets/Frontend/img/portfolio/12.jpg')?>" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">Wedding</a></h4>
-                <p>Decoration</p>
-              </div>
-            </div>
-          </div>
-
-          
-
-      </div>
-    </section><!-- #portfolio -->
-
-
-    <!--==========================
-      Team Section
-    ============================-->
-    <section id="team">
-      <div class="container">
-        <div class="section-header wow fadeInUp">
-          <h3>Team</h3>
-          <p>Manajemen kami terstruktur dan terkoordinasi dengan baik, serta memberikan pelayanan yang akan memuaskan customers</p>
-        </div>
-
-        <div class="row">
-        <?php foreach ($data->result() as $row):?>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp">
-            <div class="member">
-              <img src="<?php echo base_url().'assets/Frontend/img/user/'.$row->gambar;?>" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4><?php echo $row->nama;?></h4>
-                  <span><?php echo $row->jabatan;?></span>
-                  <div class="social">
-                    <a href="<?php echo site_url('Backend/login/login_by_id/'.$row->id_user);?>"><i class="fa fa-sign-in"></i></a>
+                  <div class="portfolio-info">
+                    <h4><a href="#"><?php echo $row->keterangan; ?></a></h4>
+                    <p><?php echo $row->nama_kategori; ?></p>
                   </div>
                 </div>
               </div>
+              <?php if (.data-filter) {
+                # code...
+              } ?>
+              <div class="col-lg-4 col-md-6 portfolio-item filter-all wow fadeInUp">
+                <div class="portfolio-wrap">
+                  <figure>
+                    <img src="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" class="img-fluid" alt="">
+                    <a href="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
+                    <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
+                  </figure>
+
+                  <div class="portfolio-info">
+                    <h4><a href="#"><?php echo $row->keterangan; ?></a></h4>
+                    <p><?php echo $row->nama_kategori; ?></p>
+                  </div>
+                </div>
+              </div>
+              <?php endforeach;?>
             </div>
+
+        </section><!-- #portfolio -->
+
+
+        <!--==========================
+      Team Section
+    ============================-->
+        <section id="team">
+          <div class="container">
+            <div class="section-header wow fadeInUp">
+              <h3>Team</h3>
+              <p>Manajemen kami terstruktur dan terkoordinasi dengan baik, serta memberikan pelayanan yang akan memuaskan customers</p>
+            </div>
+
+            <div class="row">
+              <?php foreach ($user->result() as $row):?>
+
+              <div class="col-lg-3 col-md-6 wow fadeInUp">
+                <div class="member">
+                  <img src="<?php echo base_url().'assets/Frontend/img/user/'.$row->gambar;?>" class="img-fluid" alt="">
+                  <div class="member-info">
+                    <div class="member-info-content">
+                      <h4><?php echo $row->nama;?></h4>
+                      <span><?php echo $row->jabatan;?></span>
+                      <div class="social">
+                        <a href="<?php echo site_url('Backend/login/login_by_id/'.$row->id_user);?>"><i class="fa fa-sign-in"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <?php endforeach;?>
+            </div>
+
           </div>
+        </section><!-- #team -->
 
-        <?php endforeach;?>
-        </div>
-
-      </div>
-    </section><!-- #team -->
-
-    <!--==========================
+        <!--==========================
       Contact Section
     ============================-->
-    <section id="contact" class="section-bg wow fadeInUp">
-      <div class="container">
+        <section id="contact" class="section-bg wow fadeInUp">
+          <div class="container">
 
-        <div class="section-header">
-          <h3>Contact Us</h3>
-          
-        </div>
+            <div class="section-header">
+              <h3>Contact Us</h3>
 
-        <div class="row contact-info">
-
-          <div class="col-md-4">
-            <div class="contact-address">
-              <i class="ion-ios-location-outline"></i>
-              <h3>Address</h3>
-              <address><a href="https://www.google.com/maps/place/STUDIO+FOTO+DJARI/@-7.4047131,112.7165436,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd7e55b3ebb2d5d:0x81213d9241c619c5!8m2!3d-7.4047131!4d112.7187323"> Perumahan Karang Indah Asri Blok B-30, Sidoarjo, Jawa Timur</a></address>
             </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="contact-phone">
-              <i class="ion-ios-telephone-outline"></i>
-              <h3>Phone Number</h3>
+            <div class="row contact-info">
 
-              <p> <a href="https://api.whatsapp.com/send?phone=+6285856488881&text=Permisi kak,
+              <div class="col-md-4">
+                <div class="contact-address">
+                  <i class="ion-ios-location-outline"></i>
+                  <h3>Address</h3>
+                  <address><a href="https://www.google.com/maps/place/STUDIO+FOTO+DJARI/@-7.4047131,112.7165436,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd7e55b3ebb2d5d:0x81213d9241c619c5!8m2!3d-7.4047131!4d112.7187323"> Perumahan Karang Indah Asri Blok B-30, Sidoarjo, Jawa Timur</a></address>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="contact-phone">
+                  <i class="ion-ios-telephone-outline"></i>
+                  <h3>Phone Number</h3>
+
+                  <p> <a href="https://api.whatsapp.com/send?phone=+6285856488881&text=Permisi kak,
               Saya ingin tau lebih lanjut tentang djariproduction"> +62 858-5648-8881</p>
-            </a>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="contact-email">
+                  <i class="ion-ios-email-outline"></i>
+                  <h3>Email</h3>
+                  <p>djariproduction@gmail.com</p>
+                </div>
+              </div>
+
             </div>
+
           </div>
-
-          <div class="col-md-4">
-            <div class="contact-email">
-              <i class="ion-ios-email-outline"></i>
-              <h3>Email</h3>
-              <p>djariproduction@gmail.com</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #contact -->
+        </section><!-- #contact -->
 
   </main>
