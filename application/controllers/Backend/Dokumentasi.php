@@ -36,8 +36,6 @@ class Dokumentasi extends CI_Controller {
         $config['create_thumb']= FALSE;
         $config['maintain_ratio']= FALSE;
         $config['quality']= '100%';
-        $config['width']= 500;
-        $config['height']= 320;
         $config['new_image']= './assets/Backend/img/dokumentasi/'.$img['file_name'];
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
