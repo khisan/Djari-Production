@@ -31,7 +31,9 @@ class Login extends CI_Controller {
 		if($cek > 0){
  
 			$data_session = array(
+				'id_user' => $user['id_user'],
 				'nama' => $user['nama'],
+				'jabatan' => $user['jabatan'],
 				'gambar' => $user['gambar'],
 				'status' => "login"
 				);
@@ -47,6 +49,6 @@ class Login extends CI_Controller {
  
 	function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('Login'));
+		redirect(base_url('Home'));
 	}
 }

@@ -217,9 +217,7 @@
                   </div>
                 </div>
               </div>
-              <?php if (.data-filter) {
-                # code...
-              } ?>
+              
               <div class="col-lg-4 col-md-6 portfolio-item filter-all wow fadeInUp">
                 <div class="portfolio-wrap">
                   <figure>
