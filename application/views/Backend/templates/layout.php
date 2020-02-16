@@ -29,7 +29,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Pengaturan</div>
-              <a href="<?php echo base_url(); ?>dist/features_settings" class="dropdown-item has-icon">
+              <a href="<?php echo base_url(); ?>Backend/ubah_pass" class="dropdown-item has-icon">
                 <i class="fas fa-lock"></i> Ubah Password
               </a>
               <div class="dropdown-divider"></div>

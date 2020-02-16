@@ -1,19 +1,20 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/fontawesome/css/all.min.css">
 
-  <!-- CSS Libraries -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/jqvmap/dist/jqvmap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/owlcarousel2/dist/assets/Backend/owl.carousel.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/owlcarousel2/dist/assets/Backend/owl.theme.default.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/bootstrap-social/bootstrap-social.css">
+<!-- CSS Libraries -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/jqvmap/dist/jqvmap.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/summernote/summernote-bs4.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/owlcarousel2/dist/assets/Backend/owl.carousel.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/owlcarousel2/dist/assets/Backend/owl.theme.default.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/bootstrap-social/bootstrap-social.css">
 
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/css/style.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/css/components.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/css/style.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/css/components.css">
+
 <body>
   <div id="app">
     <section class="section">
@@ -29,14 +30,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php endif; ?>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Login</h4></div>
+              <div class="card-header">
+                <h4>Login</h4>
+              </div>
 
               <div class="card-body">
                 <form method="POST" action="<?php echo base_url('Backend/login/aksi_login'); ?>" class="needs-validation" novalidate="">
-                  <?php $b = $data->row_array(); ?>
                   <div class="form-group">
                     <label for="email">Username</label>
-                    <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus value="<?php echo $b['username']; ?>">
+                    <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus value="<?php echo  $this->session->userdata("username"); ?>">
                     <div class="invalid-feedback">
                       Mohon isi username
                     </div>
@@ -44,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <div class="d-block">
-                    	<label for="password" class="control-label">Password</label>
+                      <label for="password" class="control-label">Password</label>
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                     <div class="invalid-feedback">
@@ -69,4 +71,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </section>
   </div>
 
-<?php $this->load->view('Backend/templates/js'); ?>
+  <?php $this->load->view('Backend/templates/js'); ?>
+  <?php if ($this->session->flashdata('flash') == 'Gagal') : ?>
+    <script>
+      swal('Login Gagal', {
+        button: false,
+        icon: 'error',
+        timer: 1500
+      });
+    </script>
+  <?php endif; ?>
