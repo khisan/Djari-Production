@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 $this->load->view('Backend/templates/header');
 ?>
 <!-- Main Content -->
@@ -29,32 +29,28 @@ $this->load->view('Backend/templates/header');
                     </tr>
                   </thead>
                   <tbody>
-                  <?php 
-                    $no=0;
-                    foreach ($data->result() as $row):
-                    $no++;
-                  ?>
-                    <tr>
-                      <th><?php echo $no; ?></th>
-                      <td><img width="250px" height="150px" src="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" alt=""></td>
-                      <td><?php echo $row->keterangan; ?></td>
-                      <td><?php echo $row->nama_kategori; ?></td>
-                      <td>
-                        <div class="form-button-action">
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Dokumentasi" data-id="<?php echo $row->id_dokumentasi; ?>" 
-                            data-gambar="<?php echo $row->gambar;?>"
-                            data-keterangan="<?php echo $row->keterangan;?>"
-                            data-kategori="<?php echo $row->id_kategori;?>"
-                            >
-                            <i class="fa fa-edit"></i>
-                          </a>
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Dokumentasi"  data-id="<?php echo $row->id_dokumentasi; ?>">
-                            <i class="fa fa-times"></i>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php endforeach; ?>
+                    <?php
+                    $no = 0;
+                    foreach ($data->result() as $row) :
+                      $no++;
+                    ?>
+                      <tr>
+                        <th><?php echo $no; ?></th>
+                        <td><img width="250px" height="150px" src="<?php echo base_url() . 'assets/Backend/img/dokumentasi/' . $row->gambar; ?>" alt=""></td>
+                        <td><?php echo $row->keterangan; ?></td>
+                        <td><?php echo $row->nama_kategori; ?></td>
+                        <td>
+                          <div class="form-button-action">
+                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Dokumentasi" data-id="<?php echo $row->id_dokumentasi; ?>" data-gambar="<?php echo $row->gambar; ?>" data-keterangan="<?php echo $row->keterangan; ?>" data-kategori="<?php echo $row->id_kategori; ?>">
+                              <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Dokumentasi" data-id="<?php echo $row->id_dokumentasi; ?>">
+                              <i class="fa fa-times"></i>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -66,7 +62,7 @@ $this->load->view('Backend/templates/header');
   </section>
 
   <!--ADD RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Dokumentasi/save');?>" method="post" enctype="multipart/form-data">
+  <form action="<?php echo site_url('Backend/Dokumentasi/save'); ?>" method="post" enctype="multipart/form-data">
     <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -85,7 +81,7 @@ $this->load->view('Backend/templates/header');
                 <div class="col-sm-12">
                   <div class="form-group">
                     <label for="exampleFormControlFile1">Gambar</label>
-                      <input type="file" name="filefoto" class="dropify" data-height="190" required>
+                    <input type="file" name="filefoto" class="dropify" data-height="190" required>
                   </div>
                 </div>
               </div>
@@ -104,8 +100,8 @@ $this->load->view('Backend/templates/header');
                     <select class="form-control form-control" name="kategori" id="defaultSelect">
                       <option>Pilih Kategori</option>
                       <?php foreach ($kategori->result() as $row) : ?>
-                        <option value="<?php echo $row->id_kategori;?>"><?php echo $row->nama_kategori;?></option>
-                      <?php endforeach;?>
+                        <option value="<?php echo $row->id_kategori; ?>"><?php echo $row->nama_kategori; ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
@@ -122,7 +118,7 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--EDIT RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Dokumentasi/edit');?>" method="post" enctype="multipart/form-data">
+  <form action="<?php echo site_url('Backend/Dokumentasi/edit'); ?>" method="post" enctype="multipart/form-data">
     <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -139,11 +135,10 @@ $this->load->view('Backend/templates/header');
             <form>
               <div class="row">
                 <div class="col-sm-12">
-                  <?php foreach ($data->result() as $row): ?>
                   <div class="form-group form-group-default">
-                    <input type="file" name="filefoto_2" class="dropify" data-height="190" data-default-file="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>">
+                    <input type="file" name="filefoto_2" style="margin-bottom: 20px">
+                    <img src="" alt="" name="gambar" width="450px" height="250px">
                   </div>
-                <?php endforeach;?>
                 </div>
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
@@ -154,15 +149,9 @@ $this->load->view('Backend/templates/header');
                   <div class="form-group form-group-default">
                     <select class="form-control form-control" name="kategori_2" id="defaultSelect">
                       <option>Pilih Kategori</option>
-                      <?php foreach ($data->result() as $row): ?>
-                        <?php foreach ($kategori->result() as $row_kategori) : ?>
-                          <?php if($row_kategori->id_kategori==$row->id_kategori):?>
-                          <option value="<?php echo $row->id_kategori;?>" selected><?php echo $row_kategori->nama_kategori;?></option>
-                          <?php else:?>
-                          <option value="<?php echo $row->id_kategori;?>"><?php echo $row_kategori->nama_kategori;?></option>
-                          <?php endif;?>
-                        <?php endforeach;?>
-                      <?php endforeach;?>
+                      <?php foreach ($kategori->result() as $row) : ?>
+                        <option value="<?php echo $row->id_kategori; ?>"><?php echo $row->nama_kategori; ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
@@ -170,9 +159,7 @@ $this->load->view('Backend/templates/header');
             </form>
           </div>
           <div class="modal-footer no-bd">
-            <?php foreach ($data->result() as $row): ?>
-              <input type="hidden" name="id_dokumentasi" value="<?php echo $row->id_dokumentasi;?>">
-            <?php endforeach;?>
+            <input type="text" name="kode">
             <button type="submit" class="btn btn-primary">Edit</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
@@ -182,7 +169,7 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--DELETE RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Dokumentasi/delete');?>" method="post" enctype="multipart/form-data">
+  <form action="<?php echo site_url('Backend/Dokumentasi/delete'); ?>" method="post" enctype="multipart/form-data">
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -201,7 +188,6 @@ $this->load->view('Backend/templates/header');
             </div>
           </div>
           <div class="modal-footer no-bd">
-            <input type="hidden" name="id">
             <button type="submit" class="btn btn-primary">Hapus</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
@@ -218,13 +204,13 @@ $this->load->view('Backend/templates/header');
     //Edit Record
     $('.btn-edit').on('click', function() {
       var id = $(this).data('id');
-      var filefoto = $(this).data('filefoto');
+      var gambar = $(this).data('gambar');
       var keterangan = $(this).data('keterangan');
       var kategori = $(this).data('kategori');
       $('[name="kode"]').val(id);
-      $('[name="filefoto_2"]').val(filefoto);
       $('[name="keterangan_2"]').val(keterangan);
       $('[name="kategori_2"]').val(kategori);
+      $('[name="gambar"]').attr('src', '<?php echo base_url() ?>assets/Backend/img/dokumentasi/' + gambar);
       $('#EditModal').modal('show');
     });
 
@@ -235,26 +221,13 @@ $this->load->view('Backend/templates/header');
       $('#DeleteModal').modal('show');
     });
 
-    //Done Record
-    $('.btn-done').on('click', function() {
-      var id = $(this).data('id');
-      var tanggal = $(this).data('tanggal');
-      var nama = $(this).data('nama');
-      var alamat = $(this).data('alamat');
-      $('[name="kode"]').val(id);
-      $('[name="tanggal_3"]').val(tanggal);
-      $('[name="nama_3"]').val(nama);
-      $('[name="alamat_3"]').val(alamat);
-      $('#DoneModal').modal('show');
-    });
-
     $('.dropify').dropify({
-        messages: {
-            default: 'Drag atau drop untuk memilih gambar',
-            replace: 'Ganti',
-            remove:  'Hapus',
-            error:   'error'
-        }
+      messages: {
+        default: 'Drag atau drop untuk memilih gambar',
+        replace: 'Ganti',
+        remove: 'Hapus',
+        error: 'error'
+      }
     });
 
   });

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 $this->load->view('Backend/templates/header');
 ?>
 <!-- Main Content -->
@@ -27,28 +27,26 @@ $this->load->view('Backend/templates/header');
                     </tr>
                   </thead>
                   <tbody>
-                  <?php 
-                    $no=0;
-                    foreach ($data->result() as $row):
-                    $no++;
-                  ?>
-                    <tr>
-                      <th><?php echo $no; ?></th>
-                      <td><?php echo $row->nama_kategori; ?></td>
-                      <td>
-                        <div class="form-button-action">
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Kategori" data-id="<?php echo $row->id_kategori; ?>" 
-                            data-nama_kategori="<?php echo $row->nama_kategori;?>"
-                            >
-                            <i class="fa fa-edit"></i>
-                          </a>
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Kategori"  data-id="<?php echo $row->id_kategori; ?>">
-                            <i class="fa fa-times"></i>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php endforeach; ?>
+                    <?php
+                    $no = 0;
+                    foreach ($data->result() as $row) :
+                      $no++;
+                    ?>
+                      <tr>
+                        <th><?php echo $no; ?></th>
+                        <td><?php echo $row->nama_kategori; ?></td>
+                        <td>
+                          <div class="form-button-action">
+                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Kategori" data-id="<?php echo $row->id_kategori; ?>" data-nama_kategori="<?php echo $row->nama_kategori; ?>">
+                              <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Kategori" data-id="<?php echo $row->id_kategori; ?>">
+                              <i class="fa fa-times"></i>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -60,7 +58,7 @@ $this->load->view('Backend/templates/header');
   </section>
 
   <!--ADD RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Kategori/save');?>" method="post">
+  <form action="<?php echo site_url('Backend/Kategori/save'); ?>" method="post">
     <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -95,7 +93,7 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--EDIT RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Kategori/edit');?>" method="post">
+  <form action="<?php echo site_url('Backend/Kategori/edit'); ?>" method="post">
     <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -130,7 +128,7 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--DELETE RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/Kategori/delete');?>" method="post">
+  <form action="<?php echo site_url('Backend/Kategori/delete'); ?>" method="post">
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

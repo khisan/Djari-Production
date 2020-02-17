@@ -76,12 +76,12 @@ class Dokumentasi extends CI_Controller
 				$config['quality'] = '100%';
 				$config['new_image'] = './assets/Backend/img/dokumentasi/' . $img['file_name'];
 				$this->load->library('image_lib', $config);
-				$this->image_lib->resize();;
+				$this->image_lib->resize();
 
 				$gambar = $img['file_name'];
-				$id 	  = $this->input->post('id_dokumentasi', TRUE);
+				$id 	  = $this->input->post('kode', TRUE);
 				$kategori	  = strip_tags(htmlspecialchars($this->input->post('kategori_2', TRUE), ENT_QUOTES));
-				$keterangan = $this->input->post('keterangan_2');
+				$keterangan = strip_tags(htmlspecialchars($this->input->post('keterangan_2', TRUE), ENT_QUOTES));
 
 				$this->M_dokumentasi->edit_dokumentasi_with_img($id, $kategori, $gambar, $keterangan);
 				echo $this->session->set_flashdata('msg', 'info');
@@ -91,7 +91,7 @@ class Dokumentasi extends CI_Controller
 				redirect('Backend/Dokumentasi');
 			}
 		} else {
-			$id 	  = $this->input->post('id_dokumentasi', TRUE);
+			$id 	  = $this->input->post('kode', TRUE);
 			$kategori	  = strip_tags(htmlspecialchars($this->input->post('kategori_2', TRUE), ENT_QUOTES));
 			$keterangan = $this->input->post('keterangan_2');
 
