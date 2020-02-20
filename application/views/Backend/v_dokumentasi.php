@@ -36,7 +36,7 @@ $this->load->view('Backend/templates/header');
                     ?>
                       <tr>
                         <th><?php echo $no; ?></th>
-                        <td><img width="250px" height="150px" src="<?php echo base_url() . 'assets/Backend/img/dokumentasi/' . $row->gambar; ?>" alt=""></td>
+                        <td><br><img width="250px" height="150px" src="<?php echo base_url() . 'assets/Backend/img/dokumentasi/' . $row->gambar; ?>" alt=""><br></td>
                         <td><?php echo $row->keterangan; ?></td>
                         <td><?php echo $row->nama_kategori; ?></td>
                         <td>

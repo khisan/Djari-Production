@@ -950,14 +950,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #portfolio .portfolio-item {
   position: relative;
-  height: 360px;
+  /*height: auto;*/
   overflow: hidden;
 }
 
 #portfolio .portfolio-item figure {
   background: #000;
   overflow: hidden;
-  height: 240px;
+  /*height: auto;*/
   position: relative;
   border-radius: 4px 4px 0 0;
   margin: 0;
