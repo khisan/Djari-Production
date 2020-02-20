@@ -176,7 +176,7 @@ $this->load->view('Backend/templates/header');
           <div class="modal-header no-bd">
             <h5 class="modal-title">
               <span class="fw-mediumbold">
-                Hapus Jadwal</span>
+                Hapus Dokumentasi</span>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -188,6 +188,7 @@ $this->load->view('Backend/templates/header');
             </div>
           </div>
           <div class="modal-footer no-bd">
+            <input type="hidden" name="id">
             <button type="submit" class="btn btn-primary">Hapus</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
