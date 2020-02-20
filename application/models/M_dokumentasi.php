@@ -7,6 +7,12 @@ class M_dokumentasi extends CI_Model{
 		return $result=$this->db->get("tb_dokumentasi");
 	}
 
+	function filter($kategori)
+  {
+		$result = $this->db->query("SELECT tbl1.id_dokumentasi,tbl1.id_kategori,tbl2.nama_kategori,tbl1.gambar,tbl1.keterangan FROM tb_dokumentasi tbl1 JOIN tb_kategori tbl2 ON tbl1.id_kategori=tbl2.id_kategori WHERE nama_kategori='$kategori'");
+		return $result;
+	}
+
 	function tambah_dokumentasi($id_kategori,$gambar,$keterangan){
 		$data = array(
 					'id_kategori' => $id_kategori,

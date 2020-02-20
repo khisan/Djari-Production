@@ -192,40 +192,23 @@
 
             <div class="row">
               <div class="col-lg-12">
-                <ul id="portfolio-flters">
-                  <li data-filter=".filter-all">all</li>
+                <ul id="portfolio-flters" class="kategori">
+                  <li data-filter="*" class="filter-active" value="all">All</li>
                   <?php foreach ($kategori->result() as $row):?>
-                    <li data-filter=".<?php echo $row->nama_kategori; ?>"><?php echo $row->nama_kategori; ?></li>
+                  <li data-filter=".filter-app" value="<?php echo $row->nama_kategori; ?>"><?php echo $row->nama_kategori; ?></li>
                   <?php endforeach;?>
                 </ul>
               </div>
             </div>
 
             <div class="row portfolio-container">
-            <?php foreach ($dokumentasi->result() as $row):?>
-              <div class="col-lg-4 col-md-6 portfolio-item filter-all wow fadeInUp">
+              <?php foreach ($dokumentasi->result() as $row):?>
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
                 <div class="portfolio-wrap">
                   <figure>
                     <img src="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" class="img-fluid" alt="">
                     <a href="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                    <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
                   </figure>
-
-                  <div class="portfolio-info">
-                    <h4><a href="#"><?php echo $row->keterangan; ?></a></h4>
-                    <p><?php echo $row->nama_kategori; ?></p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-lg-4 col-md-6 portfolio-item filter-all wow fadeInUp">
-                <div class="portfolio-wrap">
-                  <figure>
-                    <img src="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" class="img-fluid" alt="">
-                    <a href="<?php echo base_url().'assets/Backend/img/dokumentasi/'.$row->gambar;?>" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview" style="margin: 7%;"><i class="ion ion-eye"></i></a>
-                    <!-- <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a> -->
-                  </figure>
-
                   <div class="portfolio-info">
                     <h4><a href="#"><?php echo $row->keterangan; ?></a></h4>
                     <p><?php echo $row->nama_kategori; ?></p>
@@ -318,3 +301,24 @@
         </section><!-- #contact -->
 
   </main>
+  <script src="<?php echo base_url(); ?>assets/Frontend/lib/jquery/jquery.min.js"></script>
+  <script>
+    $(function() {
+      $('.kategori li').on('click', function() {
+        var kategori = $(this).attr("value");
+
+        $.ajax({
+          type: 'post',
+          url: '<?php echo base_url("Home/filter") ?>',
+          data: {"kategori": kategori},
+          success: function(html) {
+            $('.portfolio-container').html(html);
+            //alert(data);
+          },
+          error: function() {
+            alert('Ajax error =(');
+          }
+        });
+      });
+    });
+  </script>

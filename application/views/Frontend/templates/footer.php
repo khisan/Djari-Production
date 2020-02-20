@@ -88,9 +88,6 @@
   <script src="<?php echo base_url(); ?>assets/Frontend/lib/isotope/isotope.pkgd.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Frontend/lib/lightbox/js/lightbox.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Frontend/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="<?php echo base_url(); ?>assets/Frontend/contactform/contactform.js"></script>
-
   <!-- Template Main Javascript File -->
   <script src="<?php echo base_url(); ?>assets/Frontend/js/main.js"></script>
 

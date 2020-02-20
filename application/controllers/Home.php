@@ -21,4 +21,13 @@ class Home extends CI_Controller
 		$this->load->view('Frontend/index.php', $x);
 		$this->load->view('Frontend/templates/footer.php');
 	}
+
+	public function filter()
+	{
+		$x['dokumentasi'] = $this->M_dokumentasi->get_all_dokumentasi();
+		$x['kategori'] = $this->input->post('kategori'); 
+		$kategori = $this->input->post('kategori'); 
+		$x['data'] = $this->M_dokumentasi->filter($kategori);
+		$this->load->view('Frontend/portofolio_ajax', $x);
+	}
 }
