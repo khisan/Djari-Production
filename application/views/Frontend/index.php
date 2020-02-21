@@ -146,7 +146,7 @@
     <!--==========================
       Facts Section
     ============================-->
-    <section id="facts" class="wow fadeIn">
+    <section id="facts" class="wow fadeIn" >
       <div class="container">
 
         <header class="section-header">
@@ -185,11 +185,9 @@
     ============================-->
         <section id="portfolio" class="section-bg">
           <div class="container">
-
             <header class="section-header">
               <h3 class="section-title">Our Gallery</h3>
             </header>
-
             <div class="row">
               <div class="col-lg-12">
                 <ul id="portfolio-flters" class="kategori">
@@ -231,10 +229,10 @@
               <p>Manajemen kami terstruktur dan terkoordinasi dengan baik, serta memberikan pelayanan yang akan memuaskan customers</p>
             </div>
 
-            <div class="row">
+            <div class="row mx-auto">
               <?php foreach ($user->result() as $row):?>
 
-              <div class="col-lg-3 col-md-6 wow fadeInUp">
+              <div class="col-lg-4 col-md-6 wow fadeInUp">
                 <div class="member">
                   <img src="<?php echo base_url().'assets/Frontend/img/user/'.$row->gambar;?>" class="img-fluid" alt="">
                   <div class="member-info">

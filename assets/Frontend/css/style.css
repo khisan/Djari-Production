@@ -904,11 +904,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 #portfolio {
-  padding: 60px 0;
+  /*padding: 60px 0;*/
+  margin-bottom: 350px;
 }
 
 #portfolio #portfolio-flters {
-  padding: 0;
   margin: 5px 0 35px 0;
   list-style: none;
   text-align: center;
@@ -950,14 +950,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #portfolio .portfolio-item {
   position: relative;
-  /*height: auto;*/
   overflow: hidden;
 }
 
 #portfolio .portfolio-item figure {
   background: #000;
   overflow: hidden;
-  /*height: auto;*/
   position: relative;
   border-radius: 4px 4px 0 0;
   margin: 0;
