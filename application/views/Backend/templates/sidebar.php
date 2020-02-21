@@ -4,10 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <div class="main-sidebar sidebar-style-2">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="<?php echo base_url(); ?>dist/index">Homepage</a>
+      <a href="<?php echo base_url(); ?>Home">Homepage</a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="<?php echo base_url(); ?>dist/index">HP</a>
+      <a href="<?php echo base_url(); ?>Home">HP</a>
     </div>
     <ul class="sidebar-menu">
       <li class="dropdown <?php echo $this->uri->segment(2) == '' || $this->uri->segment(2) == 'index' || $this->uri->segment(2) == 'index_0' ? 'active' : ''; ?>">
