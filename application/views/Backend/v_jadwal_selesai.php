@@ -15,7 +15,7 @@ $this->load->view('Backend/templates/header');
           <div class="card">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="table-1">
                   <thead>
                     <tr>
                       <th scope="col">No</th>
@@ -93,6 +93,77 @@ $this->load->view('Backend/templates/header');
       var id = $(this).data('id');
       $('[name="id"]').val(id);
       $('#DeleteModal').modal('show');
+    });
+
+    $('#table-1').DataTable({
+      dom: 'Bfrtip',
+      buttons: [{
+          extend: 'copy',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            // columns: ':visible'
+            columns: ':not(.notexport)',
+
+          }
+        },
+        {
+          extend: 'csv',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            // columns: ':visible'
+            columns: ':not(.notexport)',
+
+
+          }
+        },
+        {
+          extend: 'excel',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            // columns: ':visible'
+            columns: ':not(.notexport)',
+
+
+          }
+        },
+        {
+          extend: 'pdf',
+          orientation: 'landscape',
+          pageSize: 'LEGAL',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            columns: ':not(.notexport)',
+            modifier: {
+              alignment: 'center'
+            }
+            //aligment: 'center',
+            // columns: ':visible'
+          },
+        },
+        {
+          extend: 'print',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            // columns: ':visible'
+            columns: ':not(.notexport)',
+
+          }
+        },
+      ],
+      "lengthMenu": [
+        [5, 10, 15, 20, 25, 30, -1],
+        [5, 10, 15, 20, 25, 30, "All"]
+      ]
     });
 
   });

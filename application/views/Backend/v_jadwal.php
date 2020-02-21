@@ -6,63 +6,52 @@ $this->load->view('Backend/templates/header');
 <div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Jadwal</h1>
+      <h1 id="judul-page">Jadwal</h1>
     </div>
 
     <div class="section-body">
       <div class="row">
-        <div class="col-12 col-md-12 col-lg-12">
+        <div class="col-12">
           <div class="card">
             <div class="card-header">
               <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#addRowModal"><i class="fas fa-plus"></i>Tambah Data</a>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table">
+              <!-- <div class="table-responsive"> -->
+                <table class="table table-striped" id="table-1"  style="border-collapse: separate">
                   <thead>
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Tanggal</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Alamat</th>
-                      <th scope="col">Aksi</th>
+                      <th style="text-align: center">No</th>
+                      <th style="text-align: center">Tanggal</th>
+                      <th style="text-align: center">Nama</th>
+                      <th style="text-align: center">Alamat</th>
+                      <th style="text-align: center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <?php 
+                    <?php 
                     $no=0;
                     foreach ($data->result() as $row):
                     $no++;
                   ?>
                     <tr>
-                      <th><?php echo $no; ?></th>
-                      <td><?php echo $row->tanggal; ?></td>
-                      <td><?php echo $row->nama; ?></td>
-                      <td><?php echo $row->alamat; ?></td>
-                      <td>
-                        <div class="form-button-action">
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Jadwal" data-id="<?php echo $row->id_jadwal; ?>" 
-                            data-tanggal="<?php echo $row->tanggal;?>"
-                            data-nama="<?php echo $row->nama;?>"
-                            data-alamat="<?php echo $row->alamat;?>"
-                            >
-                            <i class="fa fa-edit"></i>
-                          </a>
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Jadwal"  data-id="<?php echo $row->id_jadwal; ?>">
-                            <i class="fa fa-times"></i>
-                          </a>
-                          <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Done Jadwal"
-                          data-id="<?php echo $row->id_jadwal; ?>" 
-                          data-tanggal="<?php echo $row->tanggal;?>"
-                          data-nama="<?php echo $row->nama;?>"
-                          data-alamat="<?php echo $row->alamat;?>" 
-                          >
-                            Done
-                          </a>
-                        </div>
+                      <td style="text-align: center"><?php echo $no; ?></td>
+                      <td style="text-align: center"><?php echo $row->tanggal; ?></td>
+                      <td style="text-align: center"><?php echo $row->nama; ?></td>
+                      <td style="text-align: center"><?php echo $row->alamat; ?></td>
+                      <td style="text-align: center">
+                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Jadwal" data-id="<?php echo $row->id_jadwal; ?>" data-tanggal="<?php echo $row->tanggal;?>" data-nama="<?php echo $row->nama;?>" data-alamat="<?php echo $row->alamat;?>">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Jadwal" data-id="<?php echo $row->id_jadwal; ?>">
+                          <i class="fa fa-times"></i>
+                        </a>
+                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Done Jadwal" data-id="<?php echo $row->id_jadwal; ?>" data-tanggal="<?php echo $row->tanggal;?>" data-nama="<?php echo $row->nama;?>" data-alamat="<?php echo $row->alamat;?>">
+                          Done
+                        </a>
                       </td>
                     </tr>
-                  <?php endforeach; ?>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -198,7 +187,7 @@ $this->load->view('Backend/templates/header');
     </div>
   </form>
 
-    <!--DONE RECORD MODAL-->
+  <!--DONE RECORD MODAL-->
   <form action="<?php echo site_url('Backend/Jadwal/done');?>" method="post">
     <div class="modal fade" id="DoneModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -286,5 +275,75 @@ $this->load->view('Backend/templates/header');
       $('#DoneModal').modal('show');
     });
 
+    $('#table-1').DataTable({
+      dom: 'Bfrtip',
+      buttons: [{
+          extend: 'copy',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            // columns: ':visible'
+            columns: ':not(.notexport)',
+
+          }
+        },
+        {
+          extend: 'csv',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            // columns: ':visible'
+            columns: ':not(.notexport)',
+
+
+          }
+        },
+        {
+          extend: 'excel',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            // columns: ':visible'
+            columns: ':not(.notexport)',
+
+
+          }
+        },
+        {
+          extend: 'pdf',
+          orientation: 'landscape',
+          pageSize: 'LEGAL',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            columns: ':not(.notexport)',
+            modifier: {
+              alignment: 'center'
+            }
+            //aligment: 'center',
+            // columns: ':visible'
+          },
+        },
+        {
+          extend: 'print',
+          title: function() {
+            return $("#judul-page").text()
+          },
+          exportOptions: {
+            // columns: ':visible'
+            columns: ':not(.notexport)',
+
+          }
+        },
+      ],
+      "lengthMenu": [
+        [5, 10, 15, 20, 25, 30, -1],
+        [5, 10, 15, 20, 25, 30, "All"]
+      ]
+    });
   });
 </script>

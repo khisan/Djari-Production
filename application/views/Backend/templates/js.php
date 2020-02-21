@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/Backend/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/jquery-ui/jquery-ui.min.js"></script>
+  <!-- <script src="<?php echo base_url(); ?>assets/Backend/js/page/modules-datatables.js"></script> -->
   <script src="<?php echo base_url(); ?>assets/Backend/modules/sweetalert/sweetalert.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/sweetalert/myscript.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/summernote/summernote-bs4.js"></script>
