@@ -16,7 +16,8 @@ class User_profil extends CI_Controller
 
   function index()
   {
-    $data = $this->M_user->get_all_user()->row();
+    $id_user = $this->session->userdata('id_user');
+    $data = $this->M_user->get_user_by_id($id_user)->row();
     $x['id_user'] = $data->id_user;
     $x['nama'] = $data->nama;
     $x['jabatan'] = $data->jabatan;
