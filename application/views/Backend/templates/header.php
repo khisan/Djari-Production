@@ -8,6 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title> &mdash; Djari-Production</title>
 
+   <link href="<?php echo base_url(); ?>assets/Backend/img/logo.png" rel="icon">
+
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Backend/modules/fontawesome/css/all.min.css">
