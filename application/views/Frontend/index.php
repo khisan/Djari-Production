@@ -234,7 +234,7 @@
 
               <div class="col-lg-4 col-md-6 wow fadeInUp">
                 <div class="member">
-                  <img src="<?php echo base_url().'assets/Frontend/img/user/'.$row->gambar;?>" class="img-fluid" alt="">
+                  <img src="<?php echo base_url().'assets/Backend/img/user/'.$row->gambar;?>" class="img-fluid" alt="">
                   <div class="member-info">
                     <div class="member-info-content">
                       <h4><?php echo $row->nama;?></h4>

@@ -38,7 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <form method="POST" action="<?php echo base_url('Backend/login/aksi_login'); ?>" class="needs-validation" novalidate="">
                   <div class="form-group">
                     <label for="email">Username</label>
-                    <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus value="<?php echo  $this->session->userdata("username"); ?>">
+                    <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus value="<?php echo  $this->session->userdata("username"); ?>" readonly>
                     <div class="invalid-feedback">
                       Mohon isi username
                     </div>
