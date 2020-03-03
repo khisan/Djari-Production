@@ -41,16 +41,19 @@ class User_profil extends CI_Controller
     if (!empty($_FILES['gambar']['name'])) {
       if ($this->upload->do_upload('gambar')) {
         $data_gambar = $this->M_user->get_all_user()->row_array();
-        $gambar = $this->M_user->get_user_by_id($data_gambar['id_user'])->row();
+        $gambar = $this->M_user->get_user_by_id($id_user)->row();
         if ($gambar->gambar != null) {
-          $target_file = './assets/Backend/img/user/' . $gambar->gambar;
+          $target_file = './assets/Backend/img/user/'.$gambar->gambar;
           unlink($target_file);
         }
+        $this->load->library('upload', $config);
         $foto = $this->upload->data();
         $bg_foto = $foto['file_name'];
-      }
       $this->M_user->update_user($id_user, $nama, $jabatan, $username, $bg_foto);
       $this->session->set_flashdata('msg', 'success');
+      redirect('Backend/user_profil');
+      }
+      $this->session->set_flashdata('msg', 'warning');
       redirect('Backend/user_profil');
     } else {
       $this->M_user->update_user_noimg($id_user, $nama, $jabatan, $username);
