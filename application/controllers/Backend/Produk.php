@@ -17,15 +17,16 @@ class produk extends CI_Controller
 	public function index()
 	{
 		$x['data'] = $this->M_produk->get_all_produk();
-		$this->load->view('Backend/v_produk', $x);
+		$this->load->view('Backend/v_product', $x);
 	}
 
 	function save()
 	{
 		$nama_product = strip_tags(htmlspecialchars($this->input->post('nama_product', TRUE), ENT_QUOTES));
 		$harga = strip_tags(htmlspecialchars($this->input->post('harga', TRUE), ENT_QUOTES));
+		$harga_produk = str_replace(".", "", $harga);
 		$keterangan = strip_tags(htmlspecialchars($this->input->post('keterangan', TRUE), ENT_QUOTES));
-		$this->M_produk->tambah_produk($nama_product, $harga, $keterangan);
+		$this->M_produk->tambah_produk($nama_product, $harga_produk, $keterangan);
 		$this->session->set_flashdata('msg', 'success');
 		redirect('Backend/produk');
 	}
@@ -35,8 +36,9 @@ class produk extends CI_Controller
 		$id = $this->input->post('kode', TRUE);
 		$nama_product = strip_tags(htmlspecialchars($this->input->post('nama_product_2', TRUE), ENT_QUOTES));
 		$harga = strip_tags(htmlspecialchars($this->input->post('harga_2', TRUE), ENT_QUOTES));
+		$harga_produk = str_replace(".", "", $harga);
 		$keterangan = strip_tags(htmlspecialchars($this->input->post('keterangan_2', TRUE), ENT_QUOTES));
-		$this->M_produk->edit_produk($id, $nama_product, $harga, $keterangan);
+		$this->M_produk->edit_produk($id, $nama_product, $harga_produk, $keterangan);
 		$this->session->set_flashdata('msg', 'info');
 		redirect('Backend/produk');
 	}

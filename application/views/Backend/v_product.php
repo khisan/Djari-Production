@@ -37,18 +37,23 @@ $this->load->view('Backend/templates/header');
                       <tr>
                         <th><?php echo $no; ?></th>
                         <td><?php echo $row->nama_product; ?></td>
-                        <td><?php echo $row->harga; ?></td>
+                        <td>
+                          <?php 
+                            $angka = $row->harga;
+                            echo 'Rp. ' . number_format($angka, 0, '', '.');
+                          ?>
+                        </td>
                         <td><?php echo $row->keterangan; ?></td>
                         <td>
                           <div class="form-button-action">
-                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit pembayaran" data-id="<?php echo $row->id_product; ?>" 
-                              data-nama_client="<?php echo $row->nama_product; ?>"
-                              data-nominal="<?php echo $row->harga; ?>"
+                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit produk" data-id="<?php echo $row->id_product; ?>" 
+                              data-nama_product="<?php echo $row->nama_product; ?>"
+                              data-harga="<?php echo $row->harga; ?>"
                               data-keterangan="<?php echo $row->keterangan; ?>"
                             >
                               <i class="fa fa-edit"></i>
                             </a>
-                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus pembayaran" data-id="<?php echo $row->id_product; ?>">
+                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus produk" data-id="<?php echo $row->id_product; ?>">
                               <i class="fa fa-times"></i>
                             </a>
                           </div>
@@ -66,7 +71,7 @@ $this->load->view('Backend/templates/header');
   </section>
 
   <!--ADD RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/pembayaran/save'); ?>" method="post">
+  <form action="<?php echo site_url('Backend/produk/save'); ?>" method="post">
     <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -89,7 +94,7 @@ $this->load->view('Backend/templates/header');
                   </div>
                   <div class="form-group form-group-default">
                     <label>Harga</label>
-                    <input name="harga" type="text" class="form-control" placeholder="Harga">
+                    <input id="harga_produk" name="harga" type="text" class="form-control" placeholder="Harga">
                   </div>
                   <div class="form-group form-group-default">
                     <label>Keterangan</label>
@@ -109,7 +114,7 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--EDIT RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/pembayaran/edit'); ?>" method="post">
+  <form action="<?php echo site_url('Backend/produk/edit'); ?>" method="post">
     <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -132,7 +137,7 @@ $this->load->view('Backend/templates/header');
                 </div>
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <input name="harga_2" type="text" class="form-control" required="">
+                    <input id="harga_produk_2" name="harga_2" type="text" class="form-control" required="">
                   </div>
                 </div>
                 <div class="col-sm-12">
@@ -143,7 +148,7 @@ $this->load->view('Backend/templates/header');
               </div>
             </form>
           </div>
-          <div class="modal-footer no-bd">
+          <div class="modal-footer no-b">
             <input type="hidden" name="kode">
             <button type="submit" class="btn btn-primary">Edit</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
@@ -154,7 +159,7 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--DELETE RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/pembayaran/delete'); ?>" method="post">
+  <form action="<?php echo site_url('Backend/produk/delete'); ?>" method="post">
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -185,10 +190,15 @@ $this->load->view('Backend/templates/header');
 <?php $this->load->view('Backend/templates/footer'); ?>
 <script>
   $(document).ready(function() {
+    // Format mata uang
+    $("#harga_produk").mask('000.000.000', {reverse: true});
+
     $('#add-row').dataTable();
 
     //Edit Record
     $('.btn-edit').on('click', function() {
+      // Format mata uang
+      $("#harga_produk_2").mask('000.000.000', {reverse: true});
       var id = $(this).data('id');
       var nama_product = $(this).data('nama_product');
       var harga = $(this).data('harga');
@@ -206,6 +216,7 @@ $this->load->view('Backend/templates/header');
       $('[name="id"]').val(id);
       $('#DeleteModal').modal('show');
     });
+  
 
   });
 </script>

@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
   <!-- General JS Scripts -->
   <script src="<?php echo base_url(); ?>assets/Backend/modules/jquery.min.js"></script>
+  <script src="<?php echo base_url('assets/Backend/js/jquery.mask.min.js')?>"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/popper.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/tooltip.js"></script>
   <script src="<?php echo base_url(); ?>assets/Backend/modules/bootstrap/js/bootstrap.min.js"></script>
