@@ -41,14 +41,14 @@ $this->load->view('Backend/templates/header');
                         <td><?php echo $row->nama_product; ?></td>
                         <td>
                           <div class="form-button-action">
-                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit pembayaran" data-id="<?php echo $row->id_client; ?>" 
+                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Client" data-id="<?php echo $row->id_client; ?>" 
                               data-nama_client="<?php echo $row->nama_client; ?>"
-                              data-nominal="<?php echo $row->alamat; ?>"
-                              data-keterangan="<?php echo $row->nama_product; ?>"
+                              data-alamat="<?php echo $row->alamat; ?>"
+                              data-id_product="<?php echo $row->id_product; ?>"
                             >
                               <i class="fa fa-edit"></i>
                             </a>
-                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus pembayaran" data-id="<?php echo $row->id_client; ?>">
+                            <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Client" data-id="<?php echo $row->id_client; ?>">
                               <i class="fa fa-times"></i>
                             </a>
                           </div>
@@ -66,7 +66,7 @@ $this->load->view('Backend/templates/header');
   </section>
 
   <!--ADD RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/pembayaran/save'); ?>" method="post">
+  <form action="<?php echo site_url('Backend/client/save'); ?>" method="post">
     <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -91,9 +91,18 @@ $this->load->view('Backend/templates/header');
                     <label>Alamat</label>
                     <input name="alamat" type="text" class="form-control" placeholder="Alamat">
                   </div>
-                  <div class="form-group form-group-default">
-                    <label>Nama Produk</label>
-                    <input name="nama_product" type="text" class="form-control" placeholder="Nama Produk">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group form-group-default">
+                        <label>Nama Produk</label>
+                        <select class="form-control form-control" name="id_product" id="defaultSelect">
+                          <option>Pilih Produk</option>
+                          <?php foreach ($produk->result() as $row) : ?>
+                            <option value="<?php echo $row->id_product; ?>"><?php echo $row->nama_product; ?></option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -109,7 +118,7 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--EDIT RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/pembayaran/edit'); ?>" method="post">
+  <form action="<?php echo site_url('Backend/client/edit'); ?>" method="post">
     <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -137,7 +146,12 @@ $this->load->view('Backend/templates/header');
                 </div>
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <input name="nama_product_2" type="text" class="form-control" required="">
+                    <select class="form-control form-control" name="id_product_2" id="defaultSelect">
+                      <option>Pilih Produk</option>
+                      <?php foreach ($produk->result() as $row) : ?>
+                        <option value="<?php echo $row->id_product; ?>"><?php echo $row->nama_product; ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -154,14 +168,14 @@ $this->load->view('Backend/templates/header');
   </form>
 
   <!--DELETE RECORD MODAL-->
-  <form action="<?php echo site_url('Backend/pembayaran/delete'); ?>" method="post">
+  <form action="<?php echo site_url('Backend/client/delete'); ?>" method="post">
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header no-bd">
             <h5 class="modal-title">
               <span class="fw-mediumbold">
-                Hapus Pembayaran</span>
+                Hapus Client</span>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -192,11 +206,11 @@ $this->load->view('Backend/templates/header');
       var id = $(this).data('id');
       var nama_client = $(this).data('nama_client');
       var alamat = $(this).data('alamat');
-      var nama_product = $(this).data('nama_product');
+      var id_product = $(this).data('id_product');
       $('[name="kode"]').val(id);
       $('[name="nama_client_2"]').val(nama_client);
       $('[name="alamat_2"]').val(alamat);
-      $('[name="nama_product_2"]').val(nama_product);
+      $('[name="id_product_2"]').val(id_product);
       $('#EditModal').modal('show');
     });
 
