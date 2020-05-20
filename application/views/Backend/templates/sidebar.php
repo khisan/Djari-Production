@@ -13,7 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
       <li class="dropdown <?php echo $this->uri->segment(2) == '' || $this->uri->segment(2) == 'index' || $this->uri->segment(2) == 'index_0' ? 'active' : ''; ?>">
         <a href="<?php echo base_url(); ?>Backend/dashboard" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
       </li>
-      <li><a class="nav-link" href="<?php echo base_url(); ?>Backend/Data_admin"><i class="fas fa-users"></i> <span>Data Admin</span></a>
+      <li><a class="nav-link" href="<?php echo base_url(); ?>Backend/Data_admin"><i class="fas fa-user-tie"></i> <span>Data Admin</span></a>
       </li>
       <li class="<?php echo $this->uri->segment(2) == 'blank' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>Backend/dokumentasi"><i class="fas fa-camera"></i> <span>Dokumentasi</span></a>
       </li>
@@ -23,7 +23,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <a href="<?php echo base_url(); ?>Backend/jadwal_selesai" class="nav-link"><i class="far fa-file-alt"></i> <span>Jadwal Selesai</span></a>
       </li>
       <li class="dropdown">
-        <a href="<?php echo base_url(); ?>Backend/User_profil" class="nav-link"><i class="far fa-user"></i> <span>Profil</span></a>
+        <a href="<?php echo base_url(); ?>Backend/User_profil" class="nav-link"><i class="fas fa-user-cog"></i> <span>Profil</span></a>
+      </li>
+      <li class="dropdown">
+        <a href="<?php echo base_url(); ?>Backend/pembayaran" class="nav-link"><i class="fas fa-receipt"></i> <span>Pembayaran</span></a>
+      </li>
+      <li class="dropdown">
+        <a href="<?php echo base_url(); ?>Backend/client" class="nav-link"><i class="fas fa-users"></i> <span>Client</span></a>
       </li>
     </ul>
     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
