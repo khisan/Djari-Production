@@ -31,6 +31,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
       <li class="dropdown">
         <a href="<?php echo base_url(); ?>Backend/client" class="nav-link"><i class="fas fa-users"></i> <span>Client</span></a>
       </li>
+      <li class="dropdown">
+        <a href="<?php echo base_url(); ?>Backend/client" class="nav-link"><i class="fas fa-briefcase"></i> <span>Produk</span></a>
+      </li>
     </ul>
     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
       <a href="<?php echo base_url('Backend/login/logout'); ?>" class="btn btn-primary btn-lg btn-block btn-icon-split">
