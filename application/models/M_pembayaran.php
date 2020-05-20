@@ -2,13 +2,13 @@
 class M_pembayaran extends CI_Model{
 
 	function get_all_pembayaran(){
-		$result = $this->db->get('tb_pembayaran');
-		return $result; 
+		$this->db->join('tb_client', 'tb_client.id_client = tb_pembayaran.id_client');
+		return $result=$this->db->get("tb_pembayaran");
 	}
 
 	function tambah_pembayaran($nama_client, $nominal,$keterangan){
 		$data = array(
-	        'nama_client' => $nama_client,
+	        'id_client' => $nama_client,
 	        'nominal' => $nominal,
 	        'keterangan' => $keterangan
 		);
@@ -17,7 +17,7 @@ class M_pembayaran extends CI_Model{
 
 	function edit_pembayaran($id,$nama_client, $nominal,$keterangan){
 		$data = array(
-	        'nama_client' => $nama_client,
+	        'id_client' => $nama_client,
 	        'nominal' => $nominal,
 	        'keterangan' => $keterangan
 		);
