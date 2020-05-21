@@ -30,15 +30,15 @@ class M_jadwal extends CI_Model{
 		$this->db->delete('tb_jadwal');
 	}
 
-	function done_jadwal($id, $id_jadwal, $nama_client, $tanggal){
+	function done_jadwal($id, $nama_client, $tanggal){
 		$data = array(
-			'id_jadwal' => $id_jadwal,
-      'id_client' => $nama_client,
-      'tanggal' => $tanggal
+					'id_jadwal' => $id,
+	        'id_client' => $nama_client,
+	        'tanggal' => $tanggal
 		);
-		//$this->db->where('id_jadwal', $id);
+		// $this->db->where('id_jadwal', $id);
 		$this->db->insert('tb_jadwal_selesai', $data);
-			// $this->db->where('id_jadwal',$id);
+			//$this->db->where('id_jadwal',$id);
 			// $query = $this->db->get('tb_jadwal')->result();
 			// $q = $this->db->get('tb_jadwal');
 			// $count_row = $q->num_rows();
@@ -50,7 +50,7 @@ class M_jadwal extends CI_Model{
 	  //   } else {
 	 	// 		redirect('Backend/Jadwal_selesai');
    //  }
-    $this->hapus_jadwal($id_jadwal);
+    //$this->hapus_jadwal($id);
     $this->session->set_flashdata('msg','info');
 		redirect('Backend/Jadwal_selesai');
 	}

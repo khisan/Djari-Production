@@ -19,8 +19,8 @@ $this->load->view('Backend/templates/header');
                   <thead>
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Alamat</th>
+                      <th scope="col">ID Jadwal</th>
+                      <th scope="col">ID Client</th>
                       <th scope="col">Tanggal</th>
                       <th scope="col">Aksi</th>
                     </tr>
@@ -33,9 +33,9 @@ $this->load->view('Backend/templates/header');
                   ?>
                     <tr>
                       <th><?php echo $no; ?></th>
+                      <td><?php echo $row->id_jadwal; ?></td>
+                      <td><?php echo $row->id_client; ?></td>
                       <td><?php echo $row->tanggal; ?></td>
-                      <td><?php echo $row->nama; ?></td>
-                      <td><?php echo $row->alamat; ?></td>
                       <td>
                         <div class="form-button-action">
                           <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Jadwal"  data-id="<?php echo $row->id_jadwal_selesai; ?>">

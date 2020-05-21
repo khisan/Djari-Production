@@ -49,7 +49,7 @@ $this->load->view('Backend/templates/header');
                         <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Jadwal" data-id="<?php echo $row->id_jadwal; ?>">
                           <i class="fa fa-times"></i>
                         </a>
-                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Done Jadwal" data-id="<?php echo $row->id_jadwal; ?>" data-nama_client="<?php echo $row->id_client;?>" data-tanggal="<?php echo $row->tanggal;?>">
+                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Done Jadwal" data-id="<?php echo $row->id_jadwal; ?>" data-nama_client="<?php echo $row->id_client;?>" data-alamat="<?php echo $row->alamat;?>" data-tanggal="<?php echo $row->tanggal;?>">
                           Done
                         </a>
                       </td>
@@ -219,24 +219,19 @@ $this->load->view('Backend/templates/header');
           <div class="modal-body">
             <form>
               <div class="row">
-                <!-- <div class="col-sm-12">
+<!--                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <input name="id_3" type="text" class="form-control" required="" disabled>
+                    <input name="id_3" type="text" class="form-control" placeholder="Id Jadwal" required="" disabled>
                   </div>
                 </div> -->
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <select class="form-control form-control" name="nama_client_3" id="defaultSelect" disabled="">
-                      <option>Pilih Client</option>
-                      <?php foreach ($client->result() as $row) : ?>
-                        <option value="<?php echo $row->id_client; ?>"><?php echo $row->nama_client; ?></option>
-                      <?php endforeach; ?>
-                    </select>
+                    <input name="nama_client_3" type="text" class="form-control" placeholder="Nama Client" required="" readonly="">
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <input name="tanggal_3" type="date" class="form-control" placeholder="Tanggal" required="" disabled>
+                    <input name="tanggal_3" type="date" class="form-control" placeholder="Tanggal" required="" readonly="">
                   </div>
                 </div>
               </div>
@@ -304,7 +299,6 @@ $this->load->view('Backend/templates/header');
       var nama_client = $(this).data('nama_client');
       var tanggal = $(this).data('tanggal');
       $('[name="id"]').val(id);
-      $('[name="id_3"]').val(id);
       $('[name="nama_client_3"]').val(nama_client);
       $('[name="tanggal_3"]').val(tanggal);
       $('#DoneModal').modal('show');

@@ -8,6 +8,7 @@ class Jadwal_selesai extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_jadwal_selesai');
+		$this->load->model('M_jadwal');
 
 		if ($this->session->userdata('status') != "login") {
 			redirect(base_url("Home"));
@@ -17,6 +18,7 @@ class Jadwal_selesai extends CI_Controller
 	public function index()
 	{
 		$x['data'] = $this->M_jadwal_selesai->get_all_jadwal_selesai();
+		$x['jadwal'] = $this->M_jadwal->get_all_jadwal();
 		$this->load->view('Backend/v_jadwal_selesai', $x);
 	}
 
