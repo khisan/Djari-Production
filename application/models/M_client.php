@@ -6,6 +6,11 @@ class M_client extends CI_Model{
 		return $result=$this->db->get("tb_client");
 	}
 
+	function dropdown_alamat($id_client){
+		$this->db->where('id_client', $id_client);
+    return $result=$this->db->get("tb_client");
+	}
+
 	function tambah_client($nama_client, $alamat,$id_product){
 		$data = array(
 	        'nama_client' => $nama_client,

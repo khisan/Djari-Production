@@ -26,8 +26,8 @@ class client extends CI_Controller
 	{
 		$nama_client = strip_tags(htmlspecialchars($this->input->post('nama_client', TRUE), ENT_QUOTES));
 		$alamat = strip_tags(htmlspecialchars($this->input->post('alamat', TRUE), ENT_QUOTES));
-		$id_product = strip_tags(htmlspecialchars($this->input->post('id_product', TRUE), ENT_QUOTES));
-		$this->M_client->tambah_client($nama_client, $alamat, $id_product);
+		$nama_product = strip_tags(htmlspecialchars($this->input->post('nama_product', TRUE), ENT_QUOTES));
+		$this->M_client->tambah_client($nama_client, $alamat, $nama_product);
 		$this->session->set_flashdata('msg', 'success');
 		redirect('Backend/client');
 	}
@@ -37,8 +37,8 @@ class client extends CI_Controller
 		$id = $this->input->post('kode', TRUE);
 		$nama_client = strip_tags(htmlspecialchars($this->input->post('nama_client_2', TRUE), ENT_QUOTES));
 		$alamat = strip_tags(htmlspecialchars($this->input->post('alamat_2', TRUE), ENT_QUOTES));
-		$id_product = strip_tags(htmlspecialchars($this->input->post('id_product_2', TRUE), ENT_QUOTES));
-		$this->M_client->edit_client($id, $nama_client, $alamat, $id_product);
+		$nama_product = strip_tags(htmlspecialchars($this->input->post('nama_product_2', TRUE), ENT_QUOTES));
+		$this->M_client->edit_client($id, $nama_client, $alamat, $nama_product);
 		$this->session->set_flashdata('msg', 'info');
 		redirect('Backend/client');
 	}

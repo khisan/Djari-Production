@@ -22,9 +22,9 @@ $this->load->view('Backend/templates/header');
                   <thead>
                     <tr>
                       <th style="text-align: center">No</th>
-                      <th style="text-align: center">Tanggal</th>
-                      <th style="text-align: center">Nama</th>
+                      <th style="text-align: center">Nama Client</th>
                       <th style="text-align: center">Alamat</th>
+                      <th style="text-align: center">Tanggal</th>
                       <th style="text-align: center">Aksi</th>
                     </tr>
                   </thead>
@@ -36,17 +36,20 @@ $this->load->view('Backend/templates/header');
                   ?>
                     <tr>
                       <td style="text-align: center"><?php echo $no; ?></td>
-                      <td style="text-align: center"><?php echo $row->tanggal; ?></td>
-                      <td style="text-align: center"><?php echo $row->nama; ?></td>
+                      <td style="text-align: center"><?php echo $row->nama_client; ?></td>
                       <td style="text-align: center"><?php echo $row->alamat; ?></td>
+                      <td style="text-align: center"><?php echo $row->tanggal; ?></td>
                       <td style="text-align: center">
-                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Jadwal" data-id="<?php echo $row->id_jadwal; ?>" data-tanggal="<?php echo $row->tanggal;?>" data-nama="<?php echo $row->nama;?>" data-alamat="<?php echo $row->alamat;?>">
+                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-warning btn-edit" data-original-title="Edit Jadwal" data-id="<?php echo $row->id_jadwal; ?>" 
+                          data-nama_client="<?php echo $row->id_client;?>" 
+                          data-alamat="<?php echo $row->alamat;?>" 
+                          data-tanggal="<?php echo $row->tanggal;?>">
                           <i class="fa fa-edit"></i>
                         </a>
                         <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-danger btn-delete" data-original-title="Hapus Jadwal" data-id="<?php echo $row->id_jadwal; ?>">
                           <i class="fa fa-times"></i>
                         </a>
-                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Done Jadwal" data-id="<?php echo $row->id_jadwal; ?>" data-tanggal="<?php echo $row->tanggal;?>" data-nama="<?php echo $row->nama;?>" data-alamat="<?php echo $row->alamat;?>">
+                        <a href="javascript:void(0);" data-toggle="tooltip" title="" class="btn btn-success btn-done" data-original-title="Done Jadwal" data-id="<?php echo $row->id_jadwal; ?>" data-nama_client="<?php echo $row->id_client;?>" data-tanggal="<?php echo $row->tanggal;?>">
                           Done
                         </a>
                       </td>
@@ -80,17 +83,14 @@ $this->load->view('Backend/templates/header');
             <form>
               <div class="row">
                 <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <label>Tanggal</label>
-                    <input name="tanggal" type="date" class="form-control" placeholder="Tanggal">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <label>Nama</label>
-                    <input name="nama" type="text" class="form-control" placeholder="Nama">
+                  <label>Nama Client</label>
+                   <div class="form-group form-group-default">
+                    <select class="form-control form-control" name="nama_client" id="client" id="defaultSelect">
+                      <option>Pilih Client</option>
+                      <?php foreach ($client->result() as $row) : ?>
+                        <option value="<?php echo $row->id_client; ?>"><?php echo $row->nama_client; ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -98,7 +98,15 @@ $this->load->view('Backend/templates/header');
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
                     <label>Alamat</label>
-                    <textarea name="alamat" type="text" class="form-control" placeholder="Alamat"></textarea>
+                    <textarea name="alamat" id="alamat" type="text" class="form-control" placeholder="Alamat" readonly=""></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <label>Tanggal</label>
+                    <input name="tanggal" type="date" class="form-control" placeholder="Tanggal">
                   </div>
                 </div>
               </div>
@@ -132,24 +140,31 @@ $this->load->view('Backend/templates/header');
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
+                    <select class="form-control form-control" name="nama_client_2" id="defaultSelect" disabled="">
+                      <option>Pilih Client</option>
+                      <?php foreach ($client->result() as $row) : ?>
+                        <option value="<?php echo $row->id_client; ?>"><?php echo $row->nama_client; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <textarea name="alamat_2" type="text" class="form-control" placeholder="Alamat" required=""></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
                     <input name="tanggal_2" type="date" class="form-control" placeholder="Tanggal" required="">
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="nama_2" type="text" class="form-control" placeholder="Nama" required="">
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="alamat_2" type="text" class="form-control" placeholder="Alamat" required="">
                   </div>
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-footer no-bd">
-            <input type="hidden" name="kode">
+            <input type="hidden" name="id">
             <button type="submit" class="btn btn-primary">Edit</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
@@ -204,9 +219,19 @@ $this->load->view('Backend/templates/header');
           <div class="modal-body">
             <form>
               <div class="row">
+                <!-- <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <input name="id_3" type="text" class="form-control" required="" disabled>
+                  </div>
+                </div> -->
                 <div class="col-sm-12">
                   <div class="form-group form-group-default">
-                    <input name="id_3" type="text" class="form-control" placeholder="Id Jadwal" required="" disabled>
+                    <select class="form-control form-control" name="nama_client_3" id="defaultSelect" disabled="">
+                      <option>Pilih Client</option>
+                      <?php foreach ($client->result() as $row) : ?>
+                        <option value="<?php echo $row->id_client; ?>"><?php echo $row->nama_client; ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </div>
                 </div>
                 <div class="col-sm-12">
@@ -214,21 +239,11 @@ $this->load->view('Backend/templates/header');
                     <input name="tanggal_3" type="date" class="form-control" placeholder="Tanggal" required="" disabled>
                   </div>
                 </div>
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="nama_3" type="text" class="form-control" placeholder="Nama" required="" disabled>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="form-group form-group-default">
-                    <input name="alamat_3" type="text" class="form-control" placeholder="Alamat" required="" disabled>
-                  </div>
-                </div>
               </div>
             </form>
           </div>
           <div class="modal-footer no-bd">
-            <input type="hidden" name="kode">
+            <input type="hidden" name="id">
             <button type="submit" class="btn btn-primary">Kirim</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
@@ -240,17 +255,38 @@ $this->load->view('Backend/templates/header');
 <?php $this->load->view('Backend/templates/footer'); ?>
 <script>
   $(document).ready(function() {
+    $("#client").change(function(){ // Ketika user mengganti atau memilih data provinsi
+    
+      $.ajax({
+        type: "POST", // Method pengiriman data bisa dengan GET atau POST
+        url: "<?php echo base_url("Backend/Jadwal/drop_alamat"); ?>", // Isi dengan url/path file php yang dituju
+        data: {id_client : $("#client").val()}, // data yang akan dikirim ke file yang dituju
+        dataType: "json",
+        beforeSend: function(e) {
+          if(e && e.overrideMimeType) {
+            e.overrideMimeType("application/json;charset=UTF-8");
+          }
+        },
+        success: function(response){ // Ketika proses pengiriman berhasil
+          $("#alamat").val(response.list_alamat);
+        },
+        error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
+          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+        }
+      });
+    });
+
     $('#add-row').dataTable();
 
     //Edit Record
     $('.btn-edit').on('click', function() {
       var id = $(this).data('id');
+      var nama_client = $(this).data('nama_client');
       var tanggal = $(this).data('tanggal');
-      var nama = $(this).data('nama');
       var alamat = $(this).data('alamat');
-      $('[name="kode"]').val(id);
+      $('[name="id"]').val(id);
+      $('[name="nama_client_2"]').val(nama_client);
       $('[name="tanggal_2"]').val(tanggal);
-      $('[name="nama_2"]').val(nama);
       $('[name="alamat_2"]').val(alamat);
       $('#EditModal').modal('show');
     });
@@ -265,13 +301,12 @@ $this->load->view('Backend/templates/header');
     //Done Record
     $('.btn-done').on('click', function() {
       var id = $(this).data('id');
+      var nama_client = $(this).data('nama_client');
       var tanggal = $(this).data('tanggal');
-      var nama = $(this).data('nama');
-      var alamat = $(this).data('alamat');
-      $('[name="kode"]').val(id);
+      $('[name="id"]').val(id);
+      $('[name="id_3"]').val(id);
+      $('[name="nama_client_3"]').val(nama_client);
       $('[name="tanggal_3"]').val(tanggal);
-      $('[name="nama_3"]').val(nama);
-      $('[name="alamat_3"]').val(alamat);
       $('#DoneModal').modal('show');
     });
 

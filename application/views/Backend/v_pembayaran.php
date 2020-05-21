@@ -164,7 +164,7 @@ $this->load->view('Backend/templates/header');
             </form>
           </div>
           <div class="modal-footer no-bd">
-            <input type="hidden" name="kode">
+            <input type="" name="kode">
             <button type="submit" class="btn btn-primary">Edit</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
