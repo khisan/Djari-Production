@@ -8,7 +8,7 @@ Projek ini merupakan hasil magang saat di bangku perkuliahan membuat company pro
 PHP version 5.6 atau direkomendasikan menggunakan yang paling terbaru. Server disesuaikan dengan spesifikasi codeigniter untuk bisa berjalan dengan baik.
 
 # Instalasi
-Untuk menggunakan aplikasi dapat dimulai dengan menyesuaikan konfigurasi di folder config. Jika muncul error intl 
+Untuk menggunakan aplikasi dapat dimulai dengan menyesuaikan konfigurasi di folder config. Ikuti langkah-langkah seperti di bawah ini :
 
 1. Pertama-tama siapkan databasenya bisa import db yang telah saya upload yang bernama ```djari.sql```
 2. Buka file config.php yang terdapat pada folder config, kemudian edit sesuai penjelasan di bawah ini :
